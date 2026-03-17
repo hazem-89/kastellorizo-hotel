@@ -93,9 +93,13 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-[#5A5650] leading-relaxed">
               <p>
-              Perched at the edge of Europe, Kastellorizo is one of Greece's 
-              best-kept secrets — a tiny jewel of an island where time slows and 
-              the sea glitters with impossible clarity.
+              Hello and welcome to Monika and
+                    Damien’sstudios and apartments We can of er you
+                    studios or apartments to make your
+                    stay on Kastellorizo a pleasant and
+                    memorable one. Below you can see
+                    what we have to of er and if you have
+                    any questions, feel free to ask us.
               </p>
               <p>
                 Monika and Damien&apos;s studios and apartments were born from a passion
