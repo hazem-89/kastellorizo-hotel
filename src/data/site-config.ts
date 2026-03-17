@@ -18,6 +18,10 @@ export const siteConfig = {
 
   name: "Monika and Damien's Studios & Apartments",
 
+  /** Hero: large first line + smaller second line */
+  heroTitleLine1: "Monika and Damien's",
+  heroTitleLine2: "Studios & Apartments",
+
   tagline: "Where the Aegean Meets Eternity",
 
   description:

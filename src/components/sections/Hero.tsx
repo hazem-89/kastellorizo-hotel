@@ -106,9 +106,14 @@ export default function Hero() {
 
         <motion.h1
           {...fadeUp(0.4)}
-          className="font-serif text-5xl sm:text-6xl lg:text-8xl font-bold text-white leading-[1.05] mb-6"
+          className="font-serif font-bold text-white leading-[1.05] mb-6 flex flex-col items-center gap-3 sm:gap-4"
         >
-          {siteConfig.name}
+          <span className="text-5xl sm:text-6xl lg:text-8xl block">
+            {siteConfig.heroTitleLine1}
+          </span>
+          <span className="text-2xl sm:text-3xl lg:text-5xl font-semibold text-white/90 tracking-wide">
+            {siteConfig.heroTitleLine2}
+          </span>
         </motion.h1>
 
         <motion.p
