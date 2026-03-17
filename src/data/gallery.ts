@@ -8,7 +8,7 @@ export interface GalleryImage {
   id: string;
   src: string;
   alt: string;
-  category: "hotel" | "rooms" | "nature" | "village";
+  category: "property" | "rooms" | "nature" | "village";
 }
 
 export const galleryImages: GalleryImage[] = [

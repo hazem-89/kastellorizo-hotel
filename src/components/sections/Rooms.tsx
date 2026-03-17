@@ -42,18 +42,18 @@ export default function Rooms() {
   }, [goNext]);
 
   return (
-    <section id="rooms" className="py-28 bg-[#FAF8F4]">
+    <section id="studios" className="py-28 bg-[#FAF8F4]">
       <div className="max-w-[108rem] mx-auto px-6 lg:px-10">
         <div className="text-center mb-12">
           <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
             Accommodations
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#1A3A5C] leading-tight">
-            Rooms &{" "}
-            <span className="italic font-normal text-[#1A3A5C]/70">Suites</span>
+            Studios &{" "}
+            <span className="italic font-normal text-[#1A3A5C]/70">Apartments</span>
           </h2>
           <p className="text-[#8A8680] mt-4 max-w-xl mx-auto leading-relaxed">
-            A glimpse of our rooms. Each is individually designed to reflect the
+            A glimpse of our studios and apartments. Each is individually designed to reflect the
             character of Kastellorizo.
           </p>
         </div>
@@ -70,9 +70,9 @@ export default function Rooms() {
           </button>
 
           <div className="flex-1 min-w-0">
-            <div className="grid grid-cols-3 gap-2 lg:gap-4 items-stretch">
-              {/* Left */}
-              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4 items-stretch">
+              {/* Left — desktop only */}
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8] hidden md:block">
                 <Image
                   src={ROOM_IMAGES[prev]}
                   alt=""
@@ -82,7 +82,7 @@ export default function Rooms() {
                 />
               </div>
 
-              {/* Center */}
+              {/* Center — full width on mobile, middle column on md+ */}
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8] shadow-lg ring-2 ring-[#C9A84C]/30">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
@@ -95,18 +95,18 @@ export default function Rooms() {
                   >
                     <Image
                       src={ROOM_IMAGES[curr]}
-                      alt={`Room ${curr + 1}`}
+                      alt={`Accommodation ${curr + 1}`}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 28vw, 420px"
+                      sizes="(max-width: 767px) 100vw, (max-width: 1024px) 28vw, 420px"
                       priority={curr <= 1}
                     />
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              {/* Right */}
-              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8]">
+              {/* Right — desktop only */}
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8] hidden md:block">
                 <Image
                   src={ROOM_IMAGES[next]}
                   alt=""

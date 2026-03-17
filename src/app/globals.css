@@ -48,7 +48,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ─── Mediterranean Hotel Theme ──────────────────────────────────────────── */
+/* ─── Mediterranean studios & apartments theme ─────────────────────────── */
 :root {
   --background: oklch(0.977 0.006 85);     /* warm cream #FAF8F4 */
   --foreground: oklch(0.138 0 0);          /* near black */

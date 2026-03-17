@@ -19,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.name} — Boutique Hotel in Kastellorizo, Greece`,
+    default: `${siteConfig.name} — Kastellorizo, Greece`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Boutique Hotel in Kastellorizo, Greece`,
+    title: `${siteConfig.name} — Kastellorizo, Greece`,
     description: siteConfig.description,
     images: [
       {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Boutique Hotel in Kastellorizo`,
+    title: `${siteConfig.name} — Kastellorizo`,
     description: siteConfig.description,
   },
   robots: {
@@ -77,7 +77,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Hotel",
+              "@type": "LodgingBusiness",
               name: siteConfig.name,
               description: siteConfig.description,
               url: siteConfig.siteUrl,
@@ -94,10 +94,6 @@ export default function RootLayout({
                 "@type": "GeoCoordinates",
                 latitude: 36.1476,
                 longitude: 29.5913,
-              },
-              starRating: {
-                "@type": "Rating",
-                ratingValue: "4",
               },
               checkinTime: siteConfig.contact.checkIn,
               checkoutTime: siteConfig.contact.checkOut,

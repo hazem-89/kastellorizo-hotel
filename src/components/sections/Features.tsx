@@ -11,6 +11,7 @@ import {
   Coffee,
   Map,
   ShipWheel,
+  Ship,
 } from "lucide-react";
 
 const viewportOpts = { amount: 0.15, once: false };
@@ -22,13 +23,13 @@ const features = [
     icon: Waves,
     title: "Crystal Clear Waters",
     description:
-      "Step directly from the hotel onto the pier and dive into some of the clearest water in the Mediterranean.",
+      "Step directly from our studios and apartments onto the pier and dive into some of the clearest water in the Mediterranean.",
   },
   {
-    icon: Sun,
-    title: "Private Terraces",
+    icon: Ship,
+    title: "Daily trip to Cash-Turkey",
     description:
-      "Every room has its own outdoor space — savour your morning coffee with uninterrupted sea views.",
+      "we arrange daily trips to Cash-Turkey",
   },
   {
     icon: UtensilsCrossed,
@@ -41,18 +42,6 @@ const features = [
     title: "Free High-Speed Wi-Fi",
     description:
       "Stay connected throughout the property with complimentary high-speed internet.",
-  },
-  {
-    icon: Wind,
-    title: "Air Conditioning",
-    description:
-      "All rooms are fully air-conditioned for comfortable Mediterranean summers.",
-  },
-  {
-    icon: Coffee,
-    title: "Daily Breakfast",
-    description:
-      "Start your day with a generous Greek breakfast — honey, pastries, fresh fruit, and local cheeses.",
   },
   {
     icon: Map,
@@ -121,7 +110,7 @@ export default function Features() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feat, i) => {
             const Icon = feat.icon;
             return (

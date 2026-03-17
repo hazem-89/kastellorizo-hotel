@@ -1,7 +1,7 @@
 /**
- * ROOMS DATA
- * ==========
- * To add, remove, or update rooms:
+ * ACCOMMODATION DATA (rooms, studios, apartments)
+ * ===============================================
+ * To add, remove, or update listings:
  *   1. Replace the image URL with your own photo URL or a path like "/images/rooms/my-room.jpg"
  *      (put photos in the /public/images/rooms/ folder for local images)
  *   2. Edit name, description, size, and amenities below
@@ -65,7 +65,7 @@ export const rooms: Room[] = [
     name: "Classic Room",
     description: "Intimate and charming — the essence of island simplicity.",
     longDescription:
-      "Cosy and beautifully appointed, our Classic Rooms reflect the authentic character of the island. Perfect for those who seek simplicity without sacrificing comfort.",
+      "Cosy and beautifully appointed, our classic spaces reflect the authentic character of the island. Perfect for those who seek simplicity without sacrificing comfort.",
     size: "22 m²",
     maxGuests: 2,
     image:

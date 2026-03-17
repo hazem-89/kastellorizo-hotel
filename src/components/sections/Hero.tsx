@@ -125,12 +125,12 @@ export default function Hero() {
           <button
             onClick={() =>
               document
-                .querySelector("#rooms")
+                .querySelector("#studios")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
             className="px-8 py-4 bg-[#C9A84C] text-white text-sm uppercase tracking-widest font-semibold hover:bg-[#b8934a] transition-all duration-300 hover:scale-105 rounded-sm"
           >
-            Explore Rooms
+            Explore Studios & Apartments
           </button>
           <button
             onClick={() =>

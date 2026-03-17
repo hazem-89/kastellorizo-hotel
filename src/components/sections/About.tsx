@@ -8,7 +8,7 @@ const viewportOpts = { amount: 0.15, once: false };
 const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const };
 
 const stats = [
-  { value: "12", label: "Rooms & Suites" },
+  { value: "9", label: "Studios & Apartments" },
   { value: "4.9★", label: "Guest Rating" },
   { value: "1991", label: "Est. Year" },
   { value: "100m", label: "From the Sea" },
@@ -98,15 +98,15 @@ export default function About() {
               the sea glitters with impossible clarity.
               </p>
               <p>
-                Monika and Damien's hotel was born from a passion for this extraordinary
-                place. Every corner of the hotel reflects the island's layered
+                Monika and Damien&apos;s studios and apartments were born from a passion
+                for this extraordinary place. Every space reflects the island&apos;s layered
                 history: Venetian balconies, Ottoman fountains, and the warm
                 colours of houses that once greeted sailors from afar.
               </p>
               <p>
-                We are a family-run boutique hotel with just{" "}
-                <strong className="text-[#1A3A5C]">5 rooms, 2 studios and 2 apartments with tow rooms</strong>,
-                each one crafted to feel like your own private corner of
+                We are family-run hosts with{" "}
+                <strong className="text-[#1A3A5C]">5 rooms, 2 studios, and 2 two-room apartments</strong>
+                — each one crafted to feel like your own private corner of
                 paradise.
               </p>
             </div>
