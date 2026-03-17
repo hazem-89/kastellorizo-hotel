@@ -82,7 +82,7 @@ export default function RootLayout({
               description: siteConfig.description,
               url: siteConfig.siteUrl,
               telephone: siteConfig.contact.phone,
-              email: siteConfig.contact.email,
+              email: siteConfig.contact.emails[0],
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Kastellorizo",

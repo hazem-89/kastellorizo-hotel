@@ -1,25 +1,76 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X, ZoomIn } from "lucide-react";
 import { galleryImages } from "@/data/gallery";
 
+const viewportOpts = { amount: 0.15, once: false };
+const transition = { duration: 0.8 };
+const itemTransition = { duration: 0.6 };
+
+function GalleryImage({
+  img,
+  index,
+  onSelect,
+}: {
+  img: (typeof galleryImages)[0];
+  index: number;
+  onSelect: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, viewportOpts);
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+      transition={{ delay: index * 0.07, ...itemTransition }}
+      className="break-inside-avoid"
+    >
+      <div
+        className="group relative overflow-hidden rounded-sm cursor-pointer"
+        onClick={onSelect}
+      >
+        <Image
+          src={img.src}
+          alt={img.alt}
+          width={600}
+          height={index % 3 === 0 ? 500 : 400}
+          className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-[#1A3A5C]/0 group-hover:bg-[#1A3A5C]/50 transition-all duration-400 flex items-center justify-center">
+          <motion.div
+            initial={false}
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40">
+              <ZoomIn size={20} className="text-white" />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Gallery() {
   const [selected, setSelected] = useState<string | null>(null);
   const selectedImage = galleryImages.find((g) => g.id === selected);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerInView = useInView(headerRef, viewportOpts);
 
   return (
     <section id="gallery" className="py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         {/* Header */}
         <motion.div
+          ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={transition}
           className="text-center mb-16"
         >
           <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
@@ -28,7 +79,7 @@ export default function Gallery() {
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#1A3A5C] leading-tight">
             Life at{" "}
             <span className="italic font-normal text-[#1A3A5C]/70">
-              Hotel Megisti
+              Kastellorizo island
             </span>
           </h2>
         </motion.div>
@@ -36,38 +87,12 @@ export default function Gallery() {
         {/* Masonry grid */}
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {galleryImages.map((img, i) => (
-            <motion.div
+            <GalleryImage
               key={img.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07, duration: 0.6 }}
-              className="break-inside-avoid"
-            >
-              <div
-                className="group relative overflow-hidden rounded-sm cursor-pointer"
-                onClick={() => setSelected(img.id)}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={600}
-                  height={i % 3 === 0 ? 500 : 400}
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-[#1A3A5C]/0 group-hover:bg-[#1A3A5C]/50 transition-all duration-400 flex items-center justify-center">
-                  <motion.div
-                    initial={false}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40">
-                      <ZoomIn size={20} className="text-white" />
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
+              img={img}
+              index={i}
+              onSelect={() => setSelected(img.id)}
+            />
           ))}
         </div>
       </div>

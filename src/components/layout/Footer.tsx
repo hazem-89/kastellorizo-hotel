@@ -30,7 +30,7 @@ export default function Footer() {
             </p>
             {/* Social */}
             <div className="flex gap-4 mt-6">
-              <a
+              {/* <a
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -38,7 +38,7 @@ export default function Footer() {
                 className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
               >
                 <Instagram size={15} />
-              </a>
+              </a> */}
               <a
                 href={siteConfig.social.facebook}
                 target="_blank"
@@ -82,23 +82,32 @@ export default function Footer() {
                   {siteConfig.contact.address}
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone size={15} className="text-[#C9A84C] shrink-0" />
-                <a
-                  href={`tel:${siteConfig.contact.phone}`}
-                  className="text-sm text-white/60 hover:text-[#C9A84C] transition-colors"
-                >
-                  {siteConfig.contact.phone}
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone size={15} className="text-[#C9A84C] shrink-0 mt-0.5" />
+                <div>
+                  <a
+                    href={`tel:${siteConfig.contact.phone}`}
+                    className="text-sm text-white/60 hover:text-[#C9A84C] transition-colors"
+                    title={siteConfig.contact.phoneLabel}
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                  <span className="text-xs text-white/40 ml-1">({siteConfig.contact.phoneLabel})</span>
+                </div>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail size={15} className="text-[#C9A84C] shrink-0" />
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="text-sm text-white/60 hover:text-[#C9A84C] transition-colors"
-                >
-                  {siteConfig.contact.email}
-                </a>
+              <li className="flex items-start gap-3">
+                <Mail size={15} className="text-[#C9A84C] shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-1">
+                  {siteConfig.contact.emails.map((email) => (
+                    <a
+                      key={email}
+                      href={`mailto:${email}`}
+                      className="text-sm text-white/60 hover:text-[#C9A84C] transition-colors"
+                    >
+                      {email}
+                    </a>
+                  ))}
+                </div>
               </li>
             </ul>
           </div>

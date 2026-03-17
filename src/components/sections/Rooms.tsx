@@ -1,27 +1,50 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Users, Maximize2, Check } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { rooms } from "@/data/rooms";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const ROOM_IMAGES = [
+  "/images/rooms/room-1.jpg",
+  "/images/rooms/room-2.jpg",
+  "/images/rooms/room-3.jpg",
+  "/images/rooms/room-4.jpg",
+  "/images/rooms/room-5.jpg",
+  "/images/rooms/homepage-5.jpg",
+];
+
+const L = ROOM_IMAGES.length;
+
+function getIndices(center: number) {
+  return {
+    prev: (center - 1 + L) % L,
+    curr: center,
+    next: (center + 1) % L,
+  };
+}
 
 export default function Rooms() {
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [index, setIndex] = useState(0);
+  const { prev, curr, next } = getIndices(index);
+
+  const goNext = useCallback(() => {
+    setIndex((i) => (i + 1) % L);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    setIndex((i) => (i - 1 + L) % L);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(goNext, 5000);
+    return () => clearInterval(id);
+  }, [goNext]);
 
   return (
     <section id="rooms" className="py-28 bg-[#FAF8F4]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+      <div className="max-w-[108rem] mx-auto px-6 lg:px-10">
+        <div className="text-center mb-12">
           <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
             Accommodations
           </p>
@@ -30,86 +53,97 @@ export default function Rooms() {
             <span className="italic font-normal text-[#1A3A5C]/70">Suites</span>
           </h2>
           <p className="text-[#8A8680] mt-4 max-w-xl mx-auto leading-relaxed">
-            Each of our 12 rooms is individually designed to reflect the unique
+            A glimpse of our rooms. Each is individually designed to reflect the
             character of Kastellorizo.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Rooms grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {rooms.map((room, i) => (
-            <motion.article
-              key={room.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="group bg-white border border-[#E5E0D8] rounded-sm overflow-hidden hover:shadow-xl transition-shadow duration-500"
-            >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
+        {/* Slider row: prev button | images | next button */}
+        <div className="flex items-center gap-4 lg:gap-6">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="shrink-0 w-12 h-12 rounded-full bg-white border border-[#E5E0D8] hover:bg-[#FAF8F4] hover:border-[#C9A84C] text-[#1A3A5C] shadow-md flex items-center justify-center transition-colors"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <div className="flex-1 min-w-0">
+            <div className="grid grid-cols-3 gap-2 lg:gap-4 items-stretch">
+              {/* Left */}
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8]">
                 <Image
-                  src={room.image}
-                  alt={room.name}
+                  src={ROOM_IMAGES[prev]}
+                  alt=""
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 28vw, 420px"
                 />
-                {room.badge && (
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-[#C9A84C] text-white border-0 text-xs uppercase tracking-wider px-3 py-1 rounded-sm">
-                      {room.badge}
-                    </Badge>
-                  </div>
-                )}
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-[#1A3A5C]/0 group-hover:bg-[#1A3A5C]/20 transition-colors duration-500" />
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-serif text-xl font-bold text-[#1A3A5C]">
-                    {room.name}
-                  </h3>
-                  <div className="flex items-center gap-3 text-xs text-[#8A8680] shrink-0 ml-4">
-                    <span className="flex items-center gap-1">
-                      <Maximize2 size={12} />
-                      {room.size}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Users size={12} />
-                      {room.maxGuests}
-                    </span>
-                  </div>
-                </div>
+              {/* Center */}
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8] shadow-lg ring-2 ring-[#C9A84C]/30">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={curr}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={ROOM_IMAGES[curr]}
+                      alt={`Room ${curr + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 28vw, 420px"
+                      priority={curr <= 1}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-                <p className="text-[#6B6860] text-sm leading-relaxed mb-4">
-                  {room.description}
-                </p>
+              {/* Right */}
+              <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-[#E5E0D8]">
+                <Image
+                  src={ROOM_IMAGES[next]}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 28vw, 420px"
+                />
+              </div>
+            </div>
 
-                {/* Amenities */}
-                <ul className="grid grid-cols-2 gap-y-1.5 mb-6">
-                  {room.amenities.slice(0, 4).map((am) => (
-                    <li
-                      key={am}
-                      className="flex items-center gap-2 text-xs text-[#8A8680]"
-                    >
-                      <Check size={11} className="text-[#C9A84C] shrink-0" />
-                      {am}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
+            {/* Dots below the slider */}
+            <div className="flex justify-center gap-2 mt-6">
+              {ROOM_IMAGES.map((_, i) => (
                 <button
-                  onClick={scrollToContact}
-                  className="w-full py-3 border border-[#1A3A5C] text-[#1A3A5C] text-xs uppercase tracking-widest font-semibold hover:bg-[#1A3A5C] hover:text-white transition-all duration-300 rounded-sm"
-                >
-                  Enquire &amp; Book
-                </button>
-              </div>
-            </motion.article>
-          ))}
+                  key={i}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                    i === index
+                      ? "bg-[#C9A84C] scale-110"
+                      : "bg-[#8A8680]/40 hover:bg-[#8A8680]/60"
+                  }`}
+                  aria-label={`Go to image ${i + 1}`}
+                  aria-current={i === index ? "true" : undefined}
+                />
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={goNext}
+            className="shrink-0 w-12 h-12 rounded-full bg-white border border-[#E5E0D8] hover:bg-[#FAF8F4] hover:border-[#C9A84C] text-[#1A3A5C] shadow-md flex items-center justify-center transition-colors"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
       </div>
     </section>
