@@ -16,36 +16,76 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteUrl = siteConfig.siteUrl;
+const ogImageUrl = `${siteUrl}/opengraph-image`;
+
+const lodgingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteUrl,
+  telephone: siteConfig.contact.phone,
+  email: siteConfig.contact.emails[0],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.contact.streetAddress,
+    addressLocality: "Kastellorizo",
+    addressRegion: "Dodecanese",
+    postalCode: "85111",
+    addressCountry: "GR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 36.1476,
+    longitude: 29.5913,
+  },
+  image: [`${siteUrl}${siteConfig.ogImagePath}`],
+  priceRange: siteConfig.priceRange,
+  checkinTime: siteConfig.contact.checkIn,
+  checkoutTime: siteConfig.contact.checkOut,
+  sameAs: [
+    siteConfig.social.facebookPlaceholder,
+    siteConfig.social.instagramPlaceholder,
+    siteConfig.social.tripadvisor,
+  ],
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteConfig.name} — Kastellorizo, Greece`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.brandShort} — Kastellorizo Studios & Apartments`,
+    template: `%s | ${siteConfig.brandShort}`,
   },
   description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: [{ name: siteConfig.name }],
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
+  publisher: siteConfig.name,
+  verification: {
+    google: "YOUR_GOOGLE_VERIFICATION_CODE",
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
-    url: siteConfig.siteUrl,
+    url: siteUrl,
     siteName: siteConfig.name,
     title: `${siteConfig.name} — Kastellorizo, Greece`,
     description: siteConfig.description,
     images: [
       {
-        url: `${siteConfig.siteUrl}/og-image.jpg`,
+        url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — Kastellorizo, Greece`,
+        alt: `${siteConfig.name} — Studios & Apartments in Kastellorizo, Dodecanese, Greece`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Kastellorizo`,
+    title: `${siteConfig.brandShort} — Kastellorizo`,
     description: siteConfig.description,
+    images: [ogImageUrl],
   },
   robots: {
     index: true,
@@ -59,7 +99,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: siteConfig.siteUrl,
+    canonical: siteUrl,
   },
 };
 
@@ -71,33 +111,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Schema.org structured data for Google */}
+        {/* Time stamp for last modification */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
-              name: siteConfig.name,
-              description: siteConfig.description,
-              url: siteConfig.siteUrl,
-              telephone: siteConfig.contact.phone,
-              email: siteConfig.contact.emails[0],
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Kastellorizo",
-                addressRegion: "Dodecanese",
-                addressCountry: "GR",
-                postalCode: "85111",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 36.1476,
-                longitude: 29.5913,
-              },
-              checkinTime: siteConfig.contact.checkIn,
-              checkoutTime: siteConfig.contact.checkOut,
-            }),
+            __html: JSON.stringify(lodgingJsonLd),
           }}
         />
       </head>

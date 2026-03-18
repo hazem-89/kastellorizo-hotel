@@ -37,9 +37,11 @@ function GalleryImage({
         <Image
           src={img.src}
           alt={img.alt}
-          width={600}
-          height={index % 3 === 0 ? 500 : 400}
-          className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          title={img.alt}
+          width={800}
+          height={600}
+          className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-[#1A3A5C]/0 group-hover:bg-[#1A3A5C]/50 transition-all duration-400 flex items-center justify-center">
           <motion.div
@@ -124,6 +126,7 @@ export default function Gallery() {
                 <Image
                   src={selectedImage.src}
                   alt={selectedImage.alt}
+                  title={selectedImage.alt}
                   fill
                   className="object-contain"
                   sizes="100vw"

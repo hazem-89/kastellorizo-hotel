@@ -35,13 +35,11 @@ function StatBlock({ stat, index }: { stat: (typeof stats)[0]; index: number }) 
 export default function About() {
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
   const imageInView = useInView(imageRef, viewportOpts);
   const textInView = useInView(textRef, viewportOpts);
-  const cardInView = useInView(cardRef, viewportOpts);
 
   return (
-    <section id="about" className="py-28 bg-[#FAF8F4]">
+    <section id="about" className="py-28 bg-[#FAF8F4]" aria-labelledby="about-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Image column */}
@@ -55,9 +53,12 @@ export default function About() {
             <div className="relative h-[500px] lg:h-[600px] rounded-sm overflow-hidden">
               <Image
                 src="/images/hero/hero-1.jpg"
-                alt="Kastellorizo island view"
+                alt="Colourful Kastellorizo waterfront and neoclassical houses — Dodecanese Greece near our studios"
+                title="Kastellorizo harbour near Monika & Damien studios and apartments"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
               {/* Decorative gold border */}
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
@@ -78,7 +79,7 @@ export default function About() {
           </motion.div>
 
           {/* Text column */}
-          <motion.div
+          <motion.article
             ref={textRef}
             initial={{ opacity: 0, x: 50 }}
             animate={textInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
@@ -87,19 +88,19 @@ export default function About() {
             <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
               Our Story
             </p>
-            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#1A3A5C] leading-tight mb-6">
+            <h2
+              id="about-heading"
+              className="font-serif text-4xl lg:text-5xl font-bold text-[#1A3A5C] leading-tight mb-6"
+            >
               The Spirit of the{" "}
               <span className="italic font-normal">Eastern Aegean</span>
             </h2>
             <div className="space-y-4 text-[#5A5650] leading-relaxed">
               <p>
-              Hello and welcome to Monika and
-                    Damien’sstudios and apartments We can of er you
-                    studios or apartments to make your
-                    stay on Kastellorizo a pleasant and
-                    memorable one. Below you can see
-                    what we have to of er and if you have
-                    any questions, feel free to ask us.
+                Welcome to Monika and Damien&apos;s studios and apartments in
+                Kastellorizo—we offer studios and apartments so your stay on the
+                island is pleasant and memorable. Browse what we have to offer
+                and ask us anything you need.
               </p>
               <p>
                 Monika and Damien&apos;s studios and apartments were born from a passion
@@ -114,7 +115,7 @@ export default function About() {
                 paradise.
               </p>
             </div>
-          </motion.div>
+          </motion.article>
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ function gmailComposeUrl(email: string) {
   return `https://mail.google.com/mail/?view=cm&fs=1&to=${to}`;
 }
 
-export default function Contact() {
+export default function Contact({ hideTopHeading = false }: { hideTopHeading?: boolean }) {
   const headerRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, viewportOpts);
@@ -22,25 +22,28 @@ export default function Contact() {
   return (
     <section id="contact" className="py-28 bg-[#FAF8F4]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Header */}
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={transition}
-          className="text-center mb-16"
-        >
-          <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
-            Get in Touch
-          </p>
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#1A3A5C] leading-tight">
-            Plan Your{" "}
-            <span className="italic font-normal text-[#1A3A5C]/70">Stay</span>
-          </h2>
-          <p className="text-[#8A8680] mt-4 max-w-lg mx-auto leading-relaxed">
-            Reach us directly by phone or email — we reply within 24 hours.
-          </p>
-        </motion.div>
+        {hideTopHeading ? (
+          <h2 className="sr-only">Contact details and check-in times</h2>
+        ) : (
+          <motion.div
+            ref={headerRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={transition}
+            className="text-center mb-16"
+          >
+            <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
+              Get in Touch
+            </p>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#1A3A5C] leading-tight">
+              Plan Your{" "}
+              <span className="italic font-normal text-[#1A3A5C]/70">Stay</span>
+            </h2>
+            <p className="text-[#8A8680] mt-4 max-w-lg mx-auto leading-relaxed">
+              Reach us directly by phone or email — we reply within 24 hours.
+            </p>
+          </motion.div>
+        )}
 
         <motion.div
           ref={infoRef}
@@ -99,6 +102,7 @@ export default function Contact() {
                         href={gmailComposeUrl(email)}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={`Send a booking enquiry to ${siteConfig.name} via ${email}`}
                         className="text-sm text-white/90 hover:text-[#C9A84C] transition-colors break-all underline-offset-2 hover:underline"
                       >
                         {email}

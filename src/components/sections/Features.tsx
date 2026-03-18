@@ -90,7 +90,7 @@ export default function Features() {
   const headingInView = useInView(headingRef, viewportOpts);
 
   return (
-    <section className="py-28 bg-[#1A3A5C]">
+    <section id="features" className="py-28 bg-[#1A3A5C]" aria-label="Island experiences">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         {/* Heading */}
         <motion.div

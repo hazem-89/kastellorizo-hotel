@@ -132,10 +132,12 @@ export default function HowToGetHere() {
               <div className="relative aspect-[16/10] overflow-hidden bg-[#E5E0D8]">
                 <Image
                   src={IMG.fly}
-                  alt="Flight to Kastellorizo"
+                  alt="Olympic Air flight route to Kastellorizo airport from Rhodes, Greece"
+                  title="Flying to Kastellorizo Dodecanese"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4 flex items-center gap-2 bg-[#1A3A5C]/90 text-white px-3 py-1.5 rounded-sm text-xs uppercase tracking-widest backdrop-blur-sm">
                   <Plane className="w-3.5 h-3.5 text-[#C9A84C]" aria-hidden />
@@ -172,38 +174,46 @@ export default function HowToGetHere() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={IMG.catamaran}
-                    alt="Dodecanisos Seaways catamaran"
+                    alt="Dodecanisos Seaways catamaran ferry to Kastellorizo Greece"
+                    title="Catamaran Rhodes to Kastellorizo"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 1024px) 33vw, 17vw"
+                    loading="lazy"
                   />
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={IMG.meisExpress}
-                    alt="Meis Express ferry"
+                    alt="Meis Express ferry Kaş Turkey to Kastellorizo Megisti"
+                    title="Meis Express sea connection"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 1024px) 33vw, 17vw"
+                    loading="lazy"
                   />
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={IMG.kahramanlar}
-                    alt="Kahramanlar Kalimera ferry"
+                    alt="Kahramanlar Kalimera ferry Turkey to Kastellorizo island"
+                    title="Kahramanlar ferry to Greece"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 1024px) 33vw, 17vw"
+                    loading="lazy"
                   />
                 </div>
               </div>
               <div className="relative h-36 -mt-px overflow-hidden hidden sm:block border-t border-[#E5E0D8]">
                 <Image
                   src={IMG.ferryScene}
-                  alt="Ferry approaching Kastellorizo"
+                  alt="Ferry approaching Kastellorizo harbour — Dodecanese travel"
+                  title="Sea approach to Kastellorizo"
                   fill
                   className="object-cover opacity-90"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                 />
                 <div className="absolute top-3 left-3 flex items-center gap-2 bg-white/95 text-[#1A3A5C] px-3 py-1.5 rounded-sm text-xs uppercase tracking-widest shadow-sm">
                   <Ship className="w-3.5 h-3.5 text-[#C9A84C]" aria-hidden />
@@ -290,10 +300,12 @@ export default function HowToGetHere() {
               >
                 <Image
                   src={IMG.mapIsland}
-                  alt=""
+                  alt="Map of Kastellorizo island — open viewer to zoom"
+                  title="Kastellorizo island map"
                   fill
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[#1A3A5C]/0 group-hover:bg-[#1A3A5C]/35 transition-colors duration-300 flex items-center justify-center">
                   <span className="flex items-center gap-2 px-4 py-2 rounded-sm bg-white/95 text-[#1A3A5C] text-xs uppercase tracking-widest font-semibold shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
@@ -319,10 +331,12 @@ export default function HowToGetHere() {
               >
                 <Image
                   src={IMG.mapDodecanese}
-                  alt=""
+                  alt="Dodecanese islands map including Kastellorizo — open to zoom"
+                  title="Dodecanese Greece map"
                   fill
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[#1A3A5C]/0 group-hover:bg-[#1A3A5C]/35 transition-colors duration-300 flex items-center justify-center">
                   <span className="flex items-center gap-2 px-4 py-2 rounded-sm bg-white/95 text-[#1A3A5C] text-xs uppercase tracking-widest font-semibold shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">

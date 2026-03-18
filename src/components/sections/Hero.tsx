@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
@@ -56,9 +57,11 @@ export default function Hero() {
         >
           <Image
             src={HERO_IMAGES[imageIndex]}
-            alt="Kastellorizo island view"
+            alt={`Kastellorizo harbour and Aegean view — ${siteConfig.brandShort}, Dodecanese Greece`}
+            title="Studios & apartments in Kastellorizo — hero view"
             fill
             priority={imageIndex === 0}
+            loading={imageIndex === 0 ? undefined : "lazy"}
             className="object-cover object-center scale-105"
             style={{ transformOrigin: "center" }}
             sizes="100vw"
@@ -127,26 +130,18 @@ export default function Hero() {
           {...fadeUp(0.8)}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <button
-            onClick={() =>
-              document
-                .querySelector("#studios")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="px-8 py-4 bg-[#C9A84C] text-white text-sm uppercase tracking-widest font-semibold hover:bg-[#b8934a] transition-all duration-300 hover:scale-105 rounded-sm"
+          <Link
+            href="/rooms"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#C9A84C] text-white text-sm uppercase tracking-widest font-semibold hover:bg-[#b8934a] transition-all duration-300 hover:scale-105 rounded-sm"
           >
-            Explore Studios & Apartments
-          </button>
-          <button
-            onClick={() =>
-              document
-                .querySelector("#contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="px-8 py-4 border border-white/50 text-white text-sm uppercase tracking-widest font-medium hover:bg-white/10 hover:border-white transition-all duration-300 rounded-sm"
+            Explore studios & apartments
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/50 text-white text-sm uppercase tracking-widest font-medium hover:bg-white/10 hover:border-white transition-all duration-300 rounded-sm"
           >
-            Contact Us
-          </button>
+            Contact us for bookings
+          </Link>
         </motion.div>
       </div>
 
