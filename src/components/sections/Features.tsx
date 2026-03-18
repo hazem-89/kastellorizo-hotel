@@ -29,7 +29,7 @@ const features = [
     icon: Ship,
     title: "Daily trip to Kaś-Turkey",
     description:
-      "we arrange daily trips to Kaş-Turkey",
+      "Daily trips to Kaş-Turkey by boat",
   },
   {
     icon: UtensilsCrossed,
@@ -101,7 +101,7 @@ export default function Features() {
           className="text-center mb-16"
         >
           <p className="text-[#C9A84C] text-xs uppercase tracking-[0.4em] font-medium mb-4">
-            What We Offer
+            What the Island has to Offer
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-white leading-tight">
             A Complete Island{" "}

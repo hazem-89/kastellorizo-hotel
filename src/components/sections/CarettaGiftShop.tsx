@@ -77,7 +77,7 @@ export default function CarettaGiftShop() {
               .
             </p>
             <motion.a
-              href="https://www.facebook.com/search/top?q=Caretta+Kastellorizo"
+              href="https://www.facebook.com/caretta.kastellorizo/"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#1A3A5C] text-white text-sm font-semibold uppercase tracking-widest rounded-sm hover:bg-[#152d45] transition-colors shadow-md hover:shadow-lg"
