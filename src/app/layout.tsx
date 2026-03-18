@@ -122,6 +122,7 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${inter.variable} font-sans antialiased bg-[#FAF8F4] text-[#1C1C1C]`}
       >
+        {/* Time stamp for last modification */}
         {children}
       </body>
     </html>
