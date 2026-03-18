@@ -46,7 +46,7 @@ export default function Navbar() {
     }
   };
 
-  const linkClass = `text-sm uppercase tracking-widest font-medium transition-colors duration-300 hover:text-[#C9A84C] whitespace-nowrap ${
+  const linkClass = `cursor-pointer text-sm uppercase tracking-widest font-medium transition-colors duration-300 hover:text-[#C9A84C] whitespace-nowrap ${
     scrolled ? "text-[#1A3A5C]" : "text-white/90"
   }`;
 
@@ -65,7 +65,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
           <Link
             href="/"
-            className="flex flex-col leading-none text-left"
+            className="flex flex-col leading-none text-left cursor-pointer"
             onClick={(e) => {
               if (isHome) {
                 e.preventDefault();
@@ -98,7 +98,7 @@ export default function Navbar() {
           >
             {navLinks.map((link) =>
               "href" in link ? (
-                <Link key={link.href} href={link.href} className={linkClass}>
+                <Link key={link.href} href={link.href} className={linkClass} onClick={() => setMenuOpen(false)} >
                   {link.label}
                 </Link>
               ) : (
