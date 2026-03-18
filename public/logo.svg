@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Jost:wght@200;300&amp;display=swap');
+    </style>
+    <clipPath id="sunClip">
+      <circle cx="680" cy="250" r="108"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer glow rings -->
+  <circle cx="680" cy="250" r="140" fill="none" stroke="#E8A030" stroke-width="1.2" opacity="0.25"/>
+  <circle cx="680" cy="250" r="124" fill="none" stroke="#E8A030" stroke-width="0.8" opacity="0.15"/>
+
+  <!-- Sun rays -->
+  <g stroke="#E8A030" stroke-width="4" stroke-linecap="round">
+    <line x1="680" y1="122" x2="680" y2="102"/>
+    <line x1="738" y1="138" x2="750" y2="120"/>
+    <line x1="776" y1="188" x2="792" y2="178"/>
+    <line x1="788" y1="250" x2="808" y2="250"/>
+    <line x1="776" y1="312" x2="792" y2="322"/>
+    <line x1="738" y1="362" x2="750" y2="380"/>
+    <line x1="680" y1="378" x2="680" y2="398"/>
+    <line x1="622" y1="362" x2="610" y2="380"/>
+    <line x1="584" y1="312" x2="568" y2="322"/>
+    <line x1="572" y1="250" x2="552" y2="250"/>
+    <line x1="584" y1="188" x2="568" y2="178"/>
+    <line x1="622" y1="138" x2="610" y2="120"/>
+  </g>
+  <!-- Diagonal rays -->
+  <g stroke="#E8A030" stroke-width="2.4" stroke-linecap="round" opacity="0.55">
+    <line x1="720" y1="128" x2="730" y2="112"/>
+    <line x1="760" y1="160" x2="774" y2="148"/>
+    <line x1="784" y1="210" x2="800" y2="202"/>
+    <line x1="784" y1="290" x2="800" y2="298"/>
+    <line x1="760" y1="340" x2="774" y2="352"/>
+    <line x1="720" y1="372" x2="730" y2="388"/>
+    <line x1="640" y1="372" x2="630" y2="388"/>
+    <line x1="600" y1="340" x2="586" y2="352"/>
+    <line x1="576" y1="290" x2="560" y2="298"/>
+    <line x1="576" y1="210" x2="560" y2="202"/>
+    <line x1="600" y1="160" x2="586" y2="148"/>
+    <line x1="640" y1="128" x2="630" y2="112"/>
+  </g>
+
+  <!-- Circle base -->
+  <circle cx="680" cy="250" r="108" fill="#4BA3D4"/>
+
+  <!-- Sky top half -->
+  <rect x="572" y="142" width="216" height="108" fill="#6BB8E0" clip-path="url(#sunClip)"/>
+
+  <!-- Sun orb -->
+  <circle cx="680" cy="216" r="36" fill="#F9C840" clip-path="url(#sunClip)"/>
+  <!-- Sun highlight -->
+  <circle cx="668" cy="206" r="12" fill="#FDE68A" opacity="0.6" clip-path="url(#sunClip)"/>
+
+  <!-- Horizon haze -->
+  <rect x="572" y="246" width="216" height="6" fill="#A8D4EC" clip-path="url(#sunClip)" opacity="0.5"/>
+
+  <!-- Sea bottom half -->
+  <rect x="572" y="250" width="216" height="108" fill="#1A6EA8" clip-path="url(#sunClip)"/>
+
+  <!-- Sun reflection on water -->
+  <rect x="664" y="250" width="32" height="108" fill="#F9C840" clip-path="url(#sunClip)" opacity="0.22"/>
+
+  <!-- Wave lines -->
+  <path d="M572 264 Q604 256 636 264 Q668 272 700 264 Q732 256 788 264" fill="none" stroke="#A8D4EC" stroke-width="2.8" clip-path="url(#sunClip)"/>
+  <path d="M572 286 Q610 278 648 286 Q686 294 724 286 Q756 278 788 286" fill="none" stroke="#8DC4E0" stroke-width="2.2" clip-path="url(#sunClip)"/>
+  <path d="M572 310 Q616 302 660 310 Q704 318 748 310 Q768 306 788 310" fill="none" stroke="#7AB8D8" stroke-width="1.8" clip-path="url(#sunClip)" opacity="0.6"/>
+  <path d="M572 334 Q620 328 668 334 Q716 340 764 334" fill="none" stroke="#6AACC8" stroke-width="1.4" clip-path="url(#sunClip)" opacity="0.4"/>
+
+  <!-- Circle border -->
+  <circle cx="680" cy="250" r="108" fill="none" stroke="#1A5C8A" stroke-width="3"/>
+
+  <!-- Main title -->
+  <text x="680" y="448"
+        text-anchor="middle"
+        font-family="'Cinzel', serif"
+        font-weight="400"
+        font-size="44"
+        fill="#1A3A5C"
+        letter-spacing="10">MONIKA &amp; DAMIEN</text>
+
+  <!-- Rule -->
+  <line x1="220" y1="468" x2="1140" y2="468" stroke="#1A5C8A" stroke-width="1" opacity="0.3"/>
+
+  <!-- Subtitle -->
+  <text x="680" y="504"
+        text-anchor="middle"
+        font-family="'Jost', sans-serif"
+        font-weight="200"
+        font-size="20"
+        fill="#5A7A9A"
+        letter-spacing="10">STUDIOS &amp; APARTMENTS</text>
+
+  <text x="680" y="540"
+        text-anchor="middle"
+        font-family="'Jost', sans-serif"
+        font-weight="200"
+        font-size="18"
+        fill="#8AAAC0"
+        letter-spacing="8">KASTELLORIZO · GREECE</text>
+
+</svg>

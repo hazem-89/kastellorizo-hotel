@@ -99,35 +99,41 @@ export default function Gallery() {
 
       {/* Lightbox */}
       <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
-        <DialogContent className="max-w-4xl p-0 bg-black border-0 overflow-hidden">
+        <DialogContent
+          showCloseButton={false}
+          className="!fixed !inset-2 sm:!inset-4 md:!inset-6 !left-2 !right-2 !top-2 !bottom-2 sm:!left-4 sm:!right-4 sm:!top-4 sm:!bottom-4 md:!left-6 md:!right-6 md:!top-6 md:!bottom-6 !flex !h-[calc(100dvh-1rem)] sm:!h-[calc(100dvh-2rem)] !max-h-none !w-auto !max-w-none !translate-x-0 !translate-y-0 flex-col gap-0 rounded-sm border-0 bg-black p-0 shadow-2xl overflow-hidden"
+        >
           <button
+            type="button"
             onClick={() => setSelected(null)}
-            className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+            className="absolute top-3 right-3 z-20 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/85"
             aria-label="Close"
           >
-            <X size={18} />
+            <X size={22} />
           </button>
           <AnimatePresence mode="wait">
             {selectedImage && (
               <motion.div
                 key={selectedImage.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-full aspect-video"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="relative min-h-0 flex-1 w-full"
               >
                 <Image
                   src={selectedImage.src}
                   alt={selectedImage.alt}
                   fill
                   className="object-contain"
+                  sizes="100vw"
+                  priority
                 />
               </motion.div>
             )}
           </AnimatePresence>
           {selectedImage && (
-            <p className="p-4 text-center text-white/60 text-sm">
+            <p className="shrink-0 border-t border-white/10 bg-black/80 px-4 py-3 text-center text-sm text-white/70 backdrop-blur-sm">
               {selectedImage.alt}
             </p>
           )}

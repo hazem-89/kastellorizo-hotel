@@ -6,7 +6,9 @@ const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Studios & Apartments", href: "#studios" },
+  { label: "Getting here", href: "#travel" },
   { label: "Gallery", href: "#gallery" },
+  { label: "Caretta Gift Shop", href: "#caretta" },
   { label: "Contact", href: "#contact" },
 ];
 

@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Studios & Apartments", href: "#studios" },
+  { label: "Getting here", href: "#travel" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
@@ -52,7 +53,13 @@ export default function Navbar() {
                 scrolled ? "text-[#1A3A5C]" : "text-white"
               }`}
             >
-              {siteConfig.name}
+              {siteConfig.heroTitleLine1}
+            </span>
+            <span className={`font-serif text-sm pb-1 font-bold tracking-wide transition-colors duration-300 ${
+                scrolled ? "text-[#1A3A5C]" : "text-white"
+              }`}
+            >
+              {siteConfig.heroTitleLine2}
             </span>
             <span
               className={`text-[10px] uppercase tracking-[0.3em] transition-colors duration-300 ${
@@ -69,7 +76,7 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`text-sm uppercase tracking-widest font-medium transition-colors duration-300 hover:text-[#C9A84C] ${
+                className={`text-sm uppercase tracking-widest font-medium transition-colors duration-300 hover:text-[#C9A84C] whitespace-nowrap ${
                   scrolled ? "text-[#1A3A5C]" : "text-white/90"
                 }`}
               >

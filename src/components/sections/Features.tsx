@@ -27,9 +27,9 @@ const features = [
   },
   {
     icon: Ship,
-    title: "Daily trip to Cash-Turkey",
+    title: "Daily trip to Kaś-Turkey",
     description:
-      "we arrange daily trips to Cash-Turkey",
+      "we arrange daily trips to Kaş-Turkey",
   },
   {
     icon: UtensilsCrossed,
