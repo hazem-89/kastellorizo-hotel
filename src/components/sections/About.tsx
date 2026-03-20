@@ -103,16 +103,14 @@ export default function About() {
                 and ask us anything you need.
               </p>
               <p>
-                Monika and Damien&apos;s studios and apartments were born from a passion
-                for this extraordinary place. Every space reflects the island&apos;s layered
-                history: Venetian balconies, Ottoman fountains, and the warm
-                colours of houses that once greeted sailors from afar.
-              </p>
-              <p>
-                We are family-run hosts with{" "}
-                <strong className="text-[#1A3A5C]">5 rooms, 2 studios, and 2 two-room apartments</strong>
-                — each one crafted to feel like your own private corner of
-                paradise.
+              Monika and Damien's studios and apartments were born from a passion for this extraordinary place. 
+              All our accommodation reflects the island's rich history. Venetian, 
+              French and Ottoman styles, mixed with Greek architecture, influenced the Captains and sailors, 
+              who once travelled and traded over the centuries every corner of the Mediterranean sea, and 
+              delivered to the Island the rich look and colors that make visitors fall in love with Kastellorizo 
+              today.
+              We offer <strong className="text-[#1A3A5C]">6 studios, 3 apartments and 1 house</strong>
+              each one crafted to feel like your own private corner of paradise. We provide evert day service, high speed internet and air conditioning.
               </p>
             </div>
           </motion.article>
